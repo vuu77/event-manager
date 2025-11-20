@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - ERPVIET Event</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container">
+            <a href="#">Hướng dẫn</a>
+            <a href="#">Hỗ trợ</a>
+        </div>
+    </div>
+
+    <header class="navbar">
+        <div class="container d-flex">
+            <div class="logo">
+                <i class="fa-solid fa-layer-group"></i> VĂN VŨ <span>NGUYỄN</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" style="color: var(--primary-color);">Trang chủ</a>
+                <a href="events.html">Đăng ký sự kiện</a>
+                <a href="register.html">Tạo tài khoản</a>
+                <a href="contact.html">Liên hệ</a>
+                <a href="login.html" class="btn-login">Đăng nhập</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-slider">
+        <div class="slide active">
+            <div class="container">
+                <div class="hero-content">
+                    <p class="subtitle">GIẢI THƯỞNG DANH GIÁ</p>
+                    <h1 class="title">NẰM TOP 1 TRONG CÁCH QUẢN LÝ </h1>
+                    <h2 class="award">QUẢN LÝ SỰ KIỆN CHUYÊN NGHIỆP</h2>
+                    <p class="description">Giải pháp phần mềm quản trị doanh nghiệp xuất sắc được vinh danh bởi VINASA.</p>
+                    <div class="partners">
+                        <img src="assets/ing/unnamed.jpg" alt="Partner">
+                        <img src="assets/ing/htd.jpg" alt="Partner">
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/ing/htd.jpg" alt="Cúp vàng" onerror="this.src='https://via.placeholder.com/500x350?text=Poster+Anh'">
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="container">
+                <div class="hero-content">
+                    <p class="subtitle">CÔNG NGHỆ 4.0</p>
+                    <h1 class="title">QUẢN LÝ SỰ KIỆN</h1>
+                    <h2 class="award" style="color: #00d2ff;">TOÀN DIỆN</h2>
+                    <p class="description">Tích hợp trí tuệ nhân tạo AI giúp tối ưu hóa quy trình tổ chức.</p>
+                    <div class="partners">
+                        <img src="assets/ing/unnamed.jpg" alt="Tech">
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/ing/images.jpg" alt="AI Tech">
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+        <button class="slider-arrow prev" onclick="currentSlide(1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-arrow next" onclick="currentSlide(2)"><i class="fas fa-chevron-right"></i></button>
+    </section>
+
+    <div class="page-title-bar">
+        <h2>Phần mềm quản lý Sự kiện chuyên nghiệp</h2>
+    </div>
+
+    <section class="banner">
+        <div class="container">
+            <h1 class="hero-title">Tổ chức sự kiện đồng điệu với khán giả</h1>
+            <div class="features-icon-list">
+                <div class="icon-item">
+                    <div class="circle-icon"><i class="fa-solid fa-desktop"></i></div>
+                    <span>Hội thảo</span>
+                </div>
+                <div class="icon-item">
+                    <div class="circle-icon"><i class="fa-solid fa-music"></i></div>
+                    <span>Lễ hội</span>
+                </div>
+                <div class="icon-item">
+                    <div class="circle-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <span>Lớp học</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="events">
+        <div class="container">
+            <h2 class="section-title">Sự kiện nổi bật sắp tới</h2>
+            <div class="events-container">
+                <div class="event-card">
+                    <div class="card-body">
+                        <h3>Hội thảo AI 2025</h3>
+                        <p class="date"><i class="far fa-calendar-alt"></i> 20/12/2025</p>
+                        <a href="events.html" class="btn-outline">Xem chi tiết</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="card-body">
+                        <h3>Khởi nghiệp Trẻ</h3>
+                        <p class="date"><i class="far fa-calendar-alt"></i> 05/01/2026</p>
+                        <a href="events.html" class="btn-outline">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container"><p>© 2025 - Hệ thống Quản lý Sự kiện ERPVIET.</p></div>
+    </footer>
+
+    <script src="assets/scripts/aap.js"></script>
+</body>
+</html>

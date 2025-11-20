@@ -1,0 +1,188 @@
+/* =========================================
+   1. CẤU HÌNH CHUNG (GLOBAL)
+   ========================================= */
+:root {
+    --primary-color: #9b5179;      /* Tím hồng */
+    --primary-dark: #5f0a87;       /* Tím đậm */
+    --accent-color: #e68a73;       /* Cam */
+    --topbar-bg: #2e1f2a;          /* Đen tím */
+    --bg-body: #f8f9fa;
+    --white: #ffffff;
+    --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-body);
+    color: #333;
+    line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* =========================================
+   2. HEADER & MENU (DÙNG CHUNG)
+   ========================================= */
+.top-bar { background: var(--topbar-bg); color: #ddd; font-size: 12px; padding: 8px 0; }
+.top-bar .container { display: flex; justify-content: flex-end; gap: 20px; }
+
+header.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    padding: 15px 0; position: sticky; top: 0; z-index: 1000;
+}
+.navbar .d-flex { display: flex; justify-content: space-between; align-items: center; }
+
+.logo { font-size: 24px; font-weight: 800; color: var(--primary-dark); text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+.logo i { color: var(--primary-color); }
+.logo span { font-weight: 300; color: #666; font-size: 16px; }
+
+.nav-links { display: flex; gap: 20px; align-items: center; }
+.nav-links a { font-weight: 600; font-size: 14px; text-transform: uppercase; color: #444; position: relative;}
+.nav-links a:hover { color: var(--primary-color); }
+
+/* Nút Login trên menu */
+.btn-login-nav {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white !important; padding: 8px 20px; border-radius: 30px;
+}
+
+/* =========================================
+   3. TRANG CHỦ (HOMEPAGE)
+   ========================================= */
+/* Slider */
+.hero-slider {
+    background: linear-gradient(135deg, #4a0e4e 0%, #8e2de2 100%);
+    padding: 60px 0; color: white; position: relative;
+    overflow: hidden; min-height: 500px; display: flex; align-items: center;
+}
+.slide { display: none; width: 100%; animation: fadeIn 0.8s ease-in-out; }
+.slide.active { display: block; }
+
+.hero-slider .container { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.hero-content { flex: 1; z-index: 10; }
+.hero-content .subtitle { font-size: 16px; letter-spacing: 2px; color: #ffeb3b; margin-bottom: 10px; }
+.hero-content .title { font-size: 36px; font-weight: 700; margin-bottom: 15px; line-height: 1.2; }
+.hero-content .award { font-size: 40px; font-weight: 900; color: #ff8c73; margin-bottom: 20px; }
+.hero-content .partners img { height: 35px; margin-right: 15px; background: rgba(255,255,255,0.9); padding: 5px; border-radius: 5px; }
+
+.hero-image { flex: 1; display: flex; justify-content: center; align-items: center; }
+.hero-image img {
+    max-width: 100%; max-height: 400px; object-fit: contain;
+    border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    animation: floatImage 3s infinite alternate ease-in-out;
+}
+
+/* Điều hướng Slider */
+.slider-dots {
+    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 10px; z-index: 20;
+}
+.dot { width: 12px; height: 12px; background: rgba(255,255,255,0.3); border-radius: 50%; cursor: pointer; transition: 0.3s; }
+.dot.active { background: #ff8c73; transform: scale(1.2); }
+
+.slider-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.1); color: white; border: none;
+    padding: 15px; border-radius: 50%; cursor: pointer; z-index: 20; transition: 0.3s;
+}
+.slider-arrow:hover { background: rgba(255,255,255,0.3); }
+.slider-arrow.prev { left: 20px; }
+.slider-arrow.next { right: 20px; }
+
+/* Mục Sự kiện nổi bật (Card Grid) */
+.page-title-bar {
+    background: linear-gradient(90deg, #a4508b 0%, #5f0a87 100%);
+    color: white; text-align: center; padding: 15px 0; font-size: 18px; letter-spacing: 1px;
+}
+.banner { padding: 80px 0; text-align: center; background: white; }
+.hero-title { font-size: 32px; font-weight: 700; margin-bottom: 20px; color: #333; }
+
+.features-icon-list { display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap; }
+.circle-icon {
+    width: 90px; height: 90px; border: 2px solid var(--accent-color);
+    background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 32px; color: var(--accent-color); margin: 0 auto 15px auto; transition: 0.4s;
+}
+.circle-icon:hover { background: var(--accent-color); color: white; transform: rotate(360deg); }
+.icon-item span { font-weight: bold; font-size: 13px; text-transform: uppercase; color: #555; }
+
+.events { padding: 70px 0; background-color: var(--bg-body); }
+.section-title { text-align: center; font-size: 30px; color: var(--primary-dark); margin-bottom: 40px; }
+.events-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; }
+
+.event-card {
+    background: white; width: 350px; border-radius: 12px; overflow: hidden;
+    box-shadow: var(--shadow-card); border-top: 5px solid var(--primary-color); transition: 0.4s;
+}
+.event-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+.card-body { padding: 30px; text-align: center; }
+.card-body h3 { font-size: 20px; margin-bottom: 10px; }
+.btn-outline {
+    display: inline-block; padding: 10px 30px; border: 2px solid var(--accent-color);
+    color: var(--accent-color); border-radius: 50px; font-weight: 700; font-size: 13px;
+}
+.btn-outline:hover { background-color: var(--accent-color); color: white; }
+
+/* =========================================
+   4. TRANG LOGIN / REGISTER (CĂN GIỮA)
+   ========================================= */
+.auth-page {
+    background: linear-gradient(135deg, #fdfbfd 0%, #f4eefc 100%);
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.auth-container {
+    flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px;
+}
+.auth-card {
+    background: white; padding: 40px; border-radius: 15px;
+    box-shadow: var(--shadow-card); width: 100%; max-width: 400px;
+    text-align: center; border-top: 5px solid var(--primary-color);
+}
+.form-control {
+    width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; transition: 0.3s; margin-bottom: 15px;
+}
+.form-control:focus { border-color: var(--primary-color); outline: none; }
+.btn-submit {
+    width: 100%; padding: 12px; border: none; border-radius: 8px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    color: white; font-weight: bold; cursor: pointer; margin-top: 10px;
+}
+.btn-submit:hover { opacity: 0.9; transform: translateY(-2px); }
+
+/* =========================================
+   5. TRANG ĐĂNG KÝ SỰ KIỆN (2 CỘT)
+   ========================================= */
+.split-container {
+    display: flex; background: white; border-radius: 15px;
+    overflow: hidden; box-shadow: var(--shadow-card);
+    max-width: 1000px; margin: 50px auto; min-height: 500px;
+}
+.split-left {
+    flex: 1; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white; padding: 40px; display: flex; flex-direction: column; justify-content: center;
+}
+.split-right { flex: 1.5; padding: 40px; background: white; }
+
+.benefit-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+
+/* Footer */
+footer { background: white; padding: 30px 0; text-align: center; color: #888; border-top: 1px solid #eee; margin-top: 50px; }
+
+/* Animation */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes floatImage { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .hero-slider .container, .split-container { flex-direction: column; text-align: center; }
+    .navbar .container { flex-direction: column; gap: 15px; }
+    .nav-links { flex-wrap: wrap; justify-content: center; }
+    .hero-image img { max-height: 250px; }
+    .slider-arrow { display: none; }
+}

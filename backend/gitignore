@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+
+# SQLite database
+events.db
+
+# VSCode settings
+.vscode/
+
+# Node modules (nếu có)
+node_modules/
+
+# Logs
+*.log
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+.venv/
+
+# SQLite
+*.db
+
+# VS Code
+.vscode/
+
+# Node / frontend (nếu có)
+node_modules/
+dist/
+build/
+
+# System
+.DS_Store
+Thumbs.db

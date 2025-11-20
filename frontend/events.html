@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký Sự kiện</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container d-flex">
+            <div class="logo">
+                <i class="fa-solid fa-layer-group"></i> VĂN VŨ <span>NGUYỄN</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Trang chủ</a>
+                <a href="events.html" style="color: var(--primary-color);">Sự kiện</a>
+                <a href="login.html" class="btn-login-nav">Đăng nhập</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-title-bar">
+        <h2>Cổng đăng ký tham gia Sự kiện</h2>
+    </div>
+
+    <section class="container">
+        <div class="split-container">
+            <div class="split-left">
+                <h2>Quyền lợi tham gia</h2>
+                <p style="opacity: 0.9; margin-top: 10px;">Tham gia ngay để kết nối và học hỏi từ các chuyên gia.</p>
+                
+                <ul class="benefit-list">
+                    <li><i class="fa-solid fa-check-circle"></i> Gặp gỡ chuyên gia đầu ngành</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Mở rộng mạng lưới quan hệ</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Nhận tài liệu độc quyền</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Teabreak & Quà tặng</li>
+                </ul>
+
+                <div class="contact-info">
+                    <i class="fa-solid fa-headset" style="font-size: 40px; margin-bottom: 10px;"></i>
+                    <p>Hotline hỗ trợ: <strong>1900 1000</strong></p>
+                </div>
+            </div>
+
+            <div class="split-right">
+                <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Điền thông tin đăng ký</h2>
+                
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label>Họ và tên</label>
+                        <input type="text" id="fullname" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại</label>
+                        <input type="text" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Chọn sự kiện</label>
+                        <select id="eventSelect" class="form-control">
+                            <option>Hội thảo Công nghệ 2025</option>
+                            <option>Workshop Khởi nghiệp</option>
+                            <option>Triển lãm Nghệ thuật Số</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">GỬI ĐĂNG KÝ</button>
+                </form>
+                <p id="result" style="text-align: center; margin-top: 15px; font-weight: bold; color: green;"></p>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/scripts/aap.js"></script>
+</body>
+</html>
