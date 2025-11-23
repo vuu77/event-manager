@@ -1,0 +1,51 @@
+<?php include 'config.php'; ?>
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Đăng Nhập - ERPVIET</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="page-login">
+
+    <div class="login-wrapper">
+        <div class="card-custom text-center">
+            <h2 class="fw-bold mb-4" style="color: var(--main-purple);">
+                <i class="fa-brands fa-slack"></i> ERPVIET
+            </h2>
+            <h5 class="mb-3 text-muted">Đăng nhập hệ thống</h5>
+            
+            <form id="loginPageForm">
+                <div class="mb-3 text-start">
+                    <label class="form-label fw-bold small">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="admin@example.com" required>
+                </div>
+                <div class="mb-3 text-start">
+                    <label class="form-label fw-bold small">Mật khẩu</label>
+                    <input type="password" id="password" class="form-control" placeholder="••••••" required>
+                </div>
+                
+                <button type="submit" class="btn btn-purple w-100 py-2 fw-bold">ĐĂNG NHẬP</button>
+                <p id="notify" class="mt-3 small"></p>
+            </form>
+            
+            <hr>
+
+            <div class="mb-3">
+                <span class="text-muted small">Chưa có tài khoản?</span>
+                <a href="nava.php" class="fw-bold text-decoration-none" style="color: var(--main-purple);">
+                    Đăng ký ngay
+                </a>
+            </div>
+
+            <a href="index.php" class="text-decoration-none small text-secondary">
+                <i class="fa-solid fa-arrow-left"></i> Về trang chủ
+            </a>
+        </div>
+    </div>
+
+    <script src="assets/scripts/app.js"></script>
+</body>
+</html>
