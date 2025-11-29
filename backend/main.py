@@ -6,7 +6,8 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from sqlalchemy.exc import IntegrityError
-
+# --- Thêm dòng này vào đầu file main.py ---
+from typing import List
 
 # Import các file nội bộ
 import models, schemas, crud, database
@@ -105,6 +106,11 @@ def login(user: schemas.UserLogin, db: Session = Depends(get_db)):
         "access_token": f"token-{user_found.id}", 
         "user_info": {"name": user_found.full_name, "email": user_found.email}
     }
+    # API để Admin xem danh sách người dùng
+@app.get("/users", response_model=List[schemas.UserOut])
+def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    users = crud.get_all_users(db, skip=skip, limit=limit)
+    return users
 
 # === API EVENTS ===
 @app.get("/events")
@@ -119,12 +125,14 @@ def read_event(event_id: int, db: Session = Depends(get_db)):
     return db_event
 
 @app.post("/events")
+# Sửa trong file backend/main.py
 def create_event(
     event: schemas.EventCreate, 
     db: Session = Depends(get_db),
-    user_id: str = Depends(verify_token) # Bảo vệ API này
+    user_id: str = Depends(verify_token) # Lấy user_id từ Token
 ):
-    return crud.create_event(db=db, event=event)
+    # CHÚ Ý DÒNG DƯỚI: Chuyển user_id sang số nguyên (int) và truyền vào hàm
+    return crud.create_event(db=db, event=event, user_id=int(user_id))
 
 # === API BOOKING (ĐẶT VÉ) ===
 class BookingRequest(BaseModel):
