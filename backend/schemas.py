@@ -1,36 +1,33 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List
 
-# --- 1. PHẦN SỰ KIỆN (EVENT) ---
-class EventBase(BaseModel):
+# --- Event ---
+class EventCreate(BaseModel):
     title: str
     description: Optional[str] = None
     location: Optional[str] = None
     date: Optional[str] = None
     capacity: Optional[int] = 100
-    performers: Optional[str] = "Đang cập nhật"
+    performers: Optional[str] = None
 
-class EventCreate(EventBase):
-    pass
-
-class Event(EventBase):
+class Event(EventCreate):
     id: int
     class Config:
         from_attributes = True
 
-# --- 2. PHẦN NGƯỜI DÙNG (USER) - QUAN TRỌNG ---
-class UserBase(BaseModel):
-    email: str  # <--- Đã đổi thành str (Chấp nhận mọi loại chữ)
-
-class UserCreate(UserBase):
+# --- User ---
+class UserCreate(BaseModel):
     full_name: str
+    email: str
     password: str
 
-class UserLogin(UserBase):
+class UserLogin(BaseModel):
+    email: str
     password: str
 
-class UserOut(UserBase):
+class UserOut(BaseModel):
     id: int
     full_name: str
+    email: str
     class Config:
         from_attributes = True

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Giá - ERPVIET</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+    <div class="top-bar text-end px-5" style="background: #333; color: white; padding: 5px 0;">
+        <span class="me-3"><i class="fa-solid fa-phone"></i> Hotline: 0706 02 3978</span>
+        <span id="user-section"></span>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-custom mb-4 sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--primary); font-size: 1.5rem;">
+                <i class="fa-brands fa-slack me-2"></i>ERPVIET
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="mainMenu">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html">Tính năng</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="pricing.html">Báo giá</a></li>
+                </ul>
+            </div>
+            
+            <div class="d-none d-lg-block">
+                <a href="#" onclick="goToCreateEvent()" class="btn btn-purple rounded-pill px-4">
+                    <i class="fa-solid fa-plus"></i> Tạo Sự Kiện
+                </a>
+            </div>
+        </div>
+    </nav>
+     <div class="hero-section">
+        <div class="container">
+            <h1 class="fw-bold">Chọn Gói Giải Pháp Phù Hợp</h1>
+            <p class="lead opacity-75">Nền tảng tất cả trong một cho doanh nghiệp</p>
+            <div class="mt-4">
+            </div>
+        </div>
+    </div>
+
+    <div class="container pb-5">
+
+        <div class="row g-4">
+            <div class="col-lg-8">
+                
+                <div class="card-custom mb-4">
+                    <label class="fw-bold mb-3 fs-5 text-purple">
+                        <i class="fa-solid fa-nguoi-dung me-2"></i>1. Số lượng nhân sự sử dụng:
+                    </label>
+                    <div class="d-flex align-items-center bg-light p-3 rounded-3">
+                        <input type="number" id="userCount" class="form-control form-control-lg fw-bold text-center border-primary" value="10" min="1" style="width: 120px;">
+                        <div class="ms-3">
+                            <span class="fw-bold fs-5">Người dùng</span>
+                            <div class="text-muted small">Đơn giá: <strong>125.000 đ</strong> / người / tháng</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="fw-bold text-muted mb-3 text-uppercase mt-5">2. Chọn Ứng Dụng Mở Rộng</h5>
+                <div class="row g-3">
+                    
+                    <div class="col-md-6">
+                        <div class="app-card" onclick="toggleApp(this, 198000)">
+                            <div class="icon-box bg-light-blue"><i class="fa-solid fa-handshake"></i></div>
+                            <div class="flex-grow-1">
+                                <h6 class="fw-bold mb-1">CRM Khách Hàng</h6>
+                                <div class="small text-muted">198.000 đ/tháng</div>
+                            </div>
+                            <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="app-card" onclick="toggleApp(this, 199000)">
+                            <div class="icon-box bg-light-green"><i class="fa-solid fa-cart-shopping"></i></div>
+                            <div class="flex-grow-1">
+                                <h6 class="fw-bold mb-1">Quản Lý Bán Hàng</h6>
+                                <div class="small text-muted">199.000 đ/tháng</div>
+                            </div>
+                            <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="app-card" onclick="toggleApp(this, 297000)">
+                            <div class="icon-box bg-light-orange"><i class="fa-solid fa-warehouse"></i></div>
+                            <div class="flex-grow-1">
+                                <h6 class="fw-bold mb-1">Quản Lý Kho & Sản Xuất (ERP)</h6>
+                                <div class="small text-muted">297.000 đ/tháng</div>
+                            </div>
+                            <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="app-card" onclick="toggleApp(this, 500000)">
+                            <div class="icon-box bg-light-purple"><i class="fa-solid fa-headset"></i></div>
+                            <div class="flex-grow-1">
+                                <h6 class="fw-bold mb-1">Hỗ Trợ Kỹ Thuật VIP 24/7</h6>
+                                <div class="small text-muted">500.000 đ/tháng</div>
+                            </div>
+                            <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <h5 class="fw-bold text-muted mb-3 text-uppercase mt-5">3. Tiện ích đi kèm </h5>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="bg-white border p-3 rounded-3 d-flex align-items-center shadow-sm">
+                            <i class="fa-solid fa-comments text-secondary fs-4 me-3"></i>
+                            <div>
+                                <div class="fw-bold">Thảo luận nội bộ</div>
+                                <span class="badge bg-success">Miễn phí trọn đời</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bg-white border p-3 rounded-3 d-flex align-items-center shadow-sm">
+                            <i class="fa-solid fa-calendar-days text-secondary fs-4 me-3"></i>
+                            <div>
+                                <div class="fw-bold">Lịch làm việc</div>
+                                <span class="badge bg-success">Miễn phí trọn đời</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+                <div class="summary-box">
+                    <h4 class="fw-bold mb-4 text-center">Tóm tắt chi phí</h4>
+
+                    <div class="toggle-period mb-4">
+                        <button id="btnYearly" class="active" onclick="setBillingCycle('yearly')">Hàng Năm</button>
+                        <button id="btnMonthly" onclick="setBillingCycle('monthly')">Hàng Tháng</button>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2 small">
+                        <span class="text-muted"><span id="displayUserCount">10</span> Users:</span>
+                        <span class="fw-bold" id="totalUserPrice">1.250.000 đ</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2 small">
+                        <span class="text-muted">Ứng dụng thêm:</span>
+                        <span class="fw-bold text-purple" id="totalAppPrice">0 đ</span>
+                    </div>
+                    <hr>
+                    
+                    <div class="text-center">
+                        <div class="text-muted mb-1" id="priceLabel">Tổng thanh toán / năm</div>
+                        <div class="total-price-display fs-2" id="finalTotalPrice">15.000.000 đ</div>
+                    </div>
+
+                    <div id="yearlyInfoBox" class="alert alert-success mt-3 py-2 small text-center rounded-pill border-0 bg-opacity-25 bg-success text-success fw-bold">
+                        <i class="fa-solid fa-piggy-bank me-1"></i> Bạn đang tiết kiệm 20%
+                    </div>
+
+                    <button class="btn btn-purple w-100 py-3 mt-3 fw-bold text-uppercase rounded-pill shadow-sm" onclick="openOrderModal()">
+                        <i class="fa-solid fa-cart-arrow-down me-2"></i> Thanh Toán Ngay
+                    </button>
+                    
+                    <div class="text-center mt-3 text-muted" style="font-size: 12px;">
+                        <i class="fa-solid fa-shield-halved text-success"></i> Bảo mật thanh toán SSL
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-purple text-white">
+                    <h5 class="modal-title fw-bold">Xác Nhận & Thanh Toán</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    
+                    <div class="d-flex gap-2 mb-4">
+                        <div id="boxYear" class="border p-3 rounded w-50 text-center cursor-pointer bg-light" onclick="switchOrderType('year')">
+                            <div class="fw-bold">1 Năm</div>
+                            <div class="small text-danger" id="modalPriceYear">...</div>
+                        </div>
+                        <div id="boxMonth" class="border p-3 rounded w-50 text-center cursor-pointer" onclick="switchOrderType('month')">
+                            <div class="fw-bold">1 Tháng</div>
+                            <div class="small text-muted" id="modalPriceMonth">...</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="fw-bold small mb-2" id="qtyLabel">Số năm gia hạn:</label>
+                        <div class="input-group">
+                            <button class="btn btn-outline-secondary" onclick="changeQty(-1)"><i class="fa-solid fa-minus"></i></button>
+                            <input type="number" id="orderQty" class="form-control text-center fw-bold fs-5" value="1" min="1" readonly>
+                            <button class="btn btn-outline-secondary" onclick="changeQty(1)"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="text-center bg-light p-3 rounded border">
+                        <p class="mb-2 fw-bold text-muted small">Quét mã VietinBank để thanh toán:</p>
+                        <div class="bg-white p-2 d-inline-block rounded border mb-2 shadow-sm">
+                            <img id="orderQRImage" src="" alt="QR Code" class="img-fluid" style="max-width: 180px;">
+                        </div>
+                        <div>
+                            <div class="fs-4 fw-bold text-danger" id="orderTotalPrice">0 đ</div>
+                            <div class="small text-muted mt-1">Nội dung: <span id="orderContent" class="fw-bold text-dark">...</span></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-success fw-bold" onclick="confirmOrderPayment()">
+                        <i class="fa-solid fa-check me-2"></i> Đã chuyển khoản
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="successOrderModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center p-4">
+                <div class="modal-body">
+                    <div class="mb-3 text-success" style="font-size: 5rem;">
+                        <i class="fa-regular fa-circle-check"></i>
+                    </div>
+                    <h3 class="fw-bold text-success mb-2">Đăng Ký Thành Công!</h3>
+                    <p class="text-muted fs-5">
+                        Cảm ơn bạn đã thanh toán.<br>Hệ thống đang kích hoạt gói cước.
+                    </p>
+                    <div class="alert alert-info small mt-3">
+                        <i class="fa-solid fa-envelope me-1"></i> Thông tin chi tiết đã gửi về Email.
+                    </div>
+                    <button type="button" class="btn btn-purple px-5 mt-3 fw-bold rounded-pill" data-bs-dismiss="modal">
+                        OK, TÔI ĐÃ HIỂU
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-5 mt-auto">
+        <div class="container text-center">
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-4">
+                    <h5 class="text-warning mb-3 fw-bold">ERPVIET</h5>
+                    <p class="small text-secondary">Giải pháp quản trị doanh nghiệp toàn diện.</p>
+                </div>
+            </div>
+            <div class="border-top border-secondary pt-4 small text-secondary">
+                &copy; 2025 ERPVIET System. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/scripts/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
