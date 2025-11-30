@@ -6,86 +6,191 @@
     <title>Tạo Sự Kiện - ERPVIET</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
+    
+    <link rel="stylesheet" href="assets/css/features.css"> <link rel="stylesheet" href="assets/css/styles.css">   </head>
 <body style="background-color: #f4f6f9;">
 
-    <div class="container-fluid bg-dark text-light py-1 px-4 text-end small">
-        <span class="me-3"><i class="fa-solid fa-phone"></i> Hotline: 070602 3978</span>
-        <span id="user-section"></span>
-    </div>
-
-    <nav class="navbar navbar-expand-lg navbar-custom mb-4 sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--primary);">
-                <i class="fa-brands fa-slack me-2"></i>ERPVIET
+            <a class="navbar-brand fw-bold text-dark d-flex align-items-center" href="index.html">
+                <i class="fa-brands fa-slack fa-lg logo-icon me-2"></i>
+                <span>ElipVIET</span>
             </a>
-            <a href="index.html" class="btn btn-outline-secondary btn-sm rounded-pill">
-                <i class="fa-solid fa-house me-1"></i> Về Trang Chủ
-            </a>
+            <div class="collapse navbar-collapse justify-content-center" id="mainMenu">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="features.html">Tính năng</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pricing.html">Báo giá</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="events.html" style="color: #6f42c1 !important;">Liên hệ / Sự kiện</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <div class="container pb-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                
-                <div class="card-custom">
-                    <h4 class="text-center mb-4 fw-bold text-purple">
-                        <i class="fa-solid fa-calendar-plus me-2"></i>Thêm Sự Kiện Mới
-                    </h4>
-                    
-                    <form id="createEventForm">
-                        
-                        <div class="mb-3">
-                            <label class="fw-bold small text-muted">Tên sự kiện <span class="text-danger">*</span></label>
-                            <input type="text" id="evtTitle" class="form-control" placeholder="Ví dụ: Đại nhạc hội Mùa Hè" required>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="fw-bold small text-muted">Địa điểm</label>
-                                <div class="input-group">
-                                    <span class="input-group-text bg-light"><i class="fa-solid fa-location-dot"></i></span>
-                                    <input type="text" id="evtLocation" class="form-control" placeholder="Nhập địa điểm..." required>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="fw-bold small text-muted">Ngày tổ chức</label>
-                                <input type="date" id="evtDate" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="fw-bold small text-muted">Số lượng vé phát hành</label>
-                                <div class="input-group">
-                                    <span class="input-group-text bg-light"><i class="fa-solid fa-ticket"></i></span>
-                                    <input type="number" id="evtCapacity" class="form-control" value="100">
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="fw-bold small text-muted">Ca sĩ / Khách mời</label>
-                                <div class="input-group">
-                                    <span class="input-group-text bg-light"><i class="fa-solid fa-microphone"></i></span>
-                                    <input type="text" id="evtPerformers" class="form-control" placeholder="VD: Sơn Tùng, Đen Vâu...">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <label class="fw-bold small text-muted">Mô tả chi tiết</label>
-                            <textarea id="evtDesc" class="form-control" rows="5" placeholder="Nhập nội dung sự kiện..."></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-purple w-100 fw-bold py-2 text-uppercase shadow-sm">
-                            <i class="fa-solid fa-save me-2"></i> Lưu Sự Kiện
-                        </button>
-                    </form>
+    <div class="container py-5">
+        
+        <div id="selectionScreen" class="row justify-content-center mt-5">
+            <div class="col-12 text-center mb-5">
+                <h2 class="fw-bold">Bạn muốn tạo loại sự kiện nào?</h2>
+                <p class="text-muted">Vui lòng chọn hình thức phù hợp để chúng tôi hỗ trợ tốt nhất.</p>
+            </div>
+            
+            <div class="col-md-5 mb-4">
+                <div class="selection-card" onclick="showForm('company')">
+                    <div class="select-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <h4 class="fw-bold">Sự Kiện Công Ty</h4>
+                    <p class="text-muted mb-0">Hội thảo, Ký kết hợp đồng, Gặp gỡ đối tác. <br> (Cần liên hệ tư vấn)</p>
                 </div>
+            </div>
 
+            <div class="col-md-5 mb-4">
+                <div class="selection-card" onclick="showForm('art')">
+                    <div class="select-icon"><i class="fa-solid fa-music"></i></div>
+                    <h4 class="fw-bold">Nghệ Thuật / Giải Trí</h4>
+                    <p class="text-muted mb-0">Concert, Liveshow, Triển lãm. <br> (Tạo vé bán online ngay)</p>
+                </div>
             </div>
         </div>
+
+
+        <div id="companyForm" class="d-none animate-fade">
+            <div class="text-start mb-3">
+                <span class="btn-back" onclick="goBack()"><i class="fa-solid fa-arrow-left me-2"></i> Quay lại chọn</span>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="row g-0">
+                    <div class="col-lg-4">
+                        <div class="contact-info-box">
+                            <h3 class="fw-bold mb-4">Thông tin liên hệ</h3>
+                            <p class="mb-5 opacity-75">Hãy để lại thông tin, chuyên viên tư vấn sự kiện doanh nghiệp sẽ liên hệ lại trong vòng 24h.</p>
+                            
+                            <div class="contact-info-item">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Địa chỉ:</h6>
+                                    <span class="small">Tòa nhà Tech, Thuận An, Bình Dương</span>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <i class="fa-solid fa-phone"></i>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Hotline:</h6>
+                                    <span class="small">070602 3978</span>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <i class="fa-solid fa-envelope"></i>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Email:</h6>
+                                    <span class="small">vu662102@gmail.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                   <div class="col-lg-8">
+                <div class="contact-form-box">
+                    <h3 class="fw-bold mb-4 text-dark">Gửi yêu cầu tổ chức</h3>
+                    
+                    <form onsubmit="submitCompanyForm(event)">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="small fw-bold text-muted">Họ tên</label>
+                                <input type="text" id="comName" class="form-control" placeholder="Nhập họ tên..." required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="small fw-bold text-muted">Email công ty</label>
+                                <input type="email" id="comEmail" class="form-control" placeholder="name@company.com" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="small fw-bold text-muted">Chủ đề sự kiện</label>
+                            <input type="text" id="comTopic" class="form-control" placeholder="VD: Hội nghị khách hàng..." required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="small fw-bold text-muted">Nội dung chi tiết</label>
+                            <textarea id="comMsg" class="form-control" rows="4" placeholder="Mô tả quy mô, ngân sách..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-purple px-5 fw-bold py-2 rounded-pill">Gửi Yêu Cầu</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+        <div id="artForm" class="d-none animate-fade">
+            <div class="text-start mb-3">
+                <span class="btn-back" onclick="goBack()"><i class="fa-solid fa-arrow-left me-2"></i> Quay lại chọn</span>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card-custom bg-white p-4 rounded shadow-sm border">
+                        <h4 class="text-center mb-4 fw-bold text-purple">
+                            <i class="fa-solid fa-music me-2"></i>Tạo Sự Kiện Nghệ Thuật
+                        </h4>
+                        
+                        <form id="createEventForm">
+                            <div class="mb-3">
+                                <label class="fw-bold small text-muted">Tên sự kiện <span class="text-danger">*</span></label>
+                                <input type="text" id="evtTitle" class="form-control" placeholder="Ví dụ: Đại nhạc hội Mùa Hè" required>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="fw-bold small text-muted">Địa điểm</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="fa-solid fa-location-dot"></i></span>
+                                        <input type="text" id="evtLocation" class="form-control" placeholder="Nhập địa điểm..." required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="fw-bold small text-muted">Ngày tổ chức</label>
+                                    <input type="date" id="evtDate" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="fw-bold small text-muted">Số lượng vé phát hành</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="fa-solid fa-ticket"></i></span>
+                                        <input type="number" id="evtCapacity" class="form-control" value="100">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="fw-bold small text-muted">Ca sĩ / Khách mời</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="fa-solid fa-microphone"></i></span>
+                                        <input type="text" id="evtPerformers" class="form-control" placeholder="VD: Sơn Tùng, Đen Vâu...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="fw-bold small text-muted">Mô tả chi tiết</label>
+                                <textarea id="evtDesc" class="form-control" rows="5" placeholder="Nhập nội dung sự kiện..."></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="fw-bold small text-muted">Ảnh Banner (Link ảnh)</label>
+                                <input type="text" id="evtImage" class="form-control" placeholder="https://...">
+                            </div>
+
+                            <input type="hidden" id="organizer_id" value="1">
+
+                            <button type="submit" class="btn btn-purple w-100 fw-bold py-2 text-uppercase shadow-sm">
+                                <i class="fa-solid fa-save me-2"></i> Lưu Sự Kiện
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <footer class="bg-dark text-light py-5 mt-auto">
@@ -93,9 +198,8 @@
             <p>&copy; 2025 ERPVIET System. All rights reserved.</p>
         </div>
     </footer>
-
-    <script src="assets/scripts/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/scripts/app.js"></script>
 
 </body>
 </html>

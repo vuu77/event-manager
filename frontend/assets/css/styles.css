@@ -32,33 +32,59 @@ a { text-decoration: none; color: inherit; }
     padding: 8px 0;
     font-size: 14px;
 }
-.top-bar a { color: white !important; }
+/* --- SỬA LẠI ĐOẠN NÀY TRONG assets/css/features.css --- */
 
+/* 1. Navbar nền Tím Hồng (Giống ảnh mẫu) */
 .navbar-custom {
-    background-color: var(--bg-white);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    padding: 12px 0;
+    /* Đổi từ background-color: #fff thành Gradient Tím Hồng */
+    background: linear-gradient(90deg, #a04690 0%, #e0dee4 100%);
+    border-bottom: none;
+    padding: 15px 0;
+    box-shadow: 0 4px 15px rgba(194, 112, 183, 0.933);
 }
 
+/* 2. Chữ trên Menu đổi thành màu Trắng cho nổi */
+.nav-link {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9) !important; /* Chữ trắng mờ */
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    margin: 0 10px;
+    transition: all 0.3s;
+}
+
+.nav-link:hover, .nav-link.active { 
+    color: #fff !important; /* Chữ trắng tinh khi hover */
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+/* 3. Logo đổi sang màu Trắng (để nổi trên nền Tím) */
 .navbar-brand {
+    font-size: 1.6rem;
     font-weight: 800;
-    font-size: 24px;
-    color: var(--primary) !important;
+    letter-spacing: -0.5px;
+    color: #fff !important; /* Logo chữ trắng */
     display: flex;
     align-items: center;
 }
 
-.navbar-custom .nav-link {
-    color: #555;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    margin: 0 12px;
-    transition: color 0.3s;
+.navbar-brand i {
+    color: #fff; /* Icon logo trắng */
+    font-size: 1.8rem;
+    margin-right: 10px;
 }
 
-.navbar-custom .nav-link:hover, .navbar-custom .nav-link.active {
-    color: var(--primary);
+/* 4. Nút Đăng nhập (Góc phải) đổi style cho hợp nền tím */
+.d-none .btn-purple-outline {
+    border: 2px solid rgba(255,255,255,0.8);
+    color: #fff;
+    background: transparent;
+}
+
+.d-none .btn-purple-outline:hover {
+    background: #fff;
+    color: #6f42c1;
 }
 
 /* 3. NÚT BẤM (BUTTONS) */
@@ -240,5 +266,146 @@ footer {
 
 /* Tiện ích chữ màu tím */
 .text-purple { color: var(--primary) !important; }
+/* Tiện ích chữ màu đỏ */
+.text-red { color: var(--accent-red) !important; }
 
+/* 8. RESPONSIVE */
+@media (max-width: 768px) {
+    .login-wrapper {
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .feature-hero h1 {
+        font-size: 2rem;
+    }
+
+    .app-card {
+        padding: 15px;
+    }
+}
+        :root {
+            --primary-color: #c142ae;
+            --primary-hover: #a33296;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Navbar & Button Custom */
+        .navbar-custom {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .btn-purple {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-purple:hover {
+            background-color: var(--primary-hover);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .feature-hero {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e9ecef 100%);
+            padding: 60px 0 40px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        /* App Card Styling */
+        .app-card {
+            display: block;
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-color: var(--primary-color);
+        }
+
+        .app-card h5 {
+            font-weight: 700;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .app-card p {
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .btn-install {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-top: auto;
+        }
+
+        /* Icon Boxes Gradients */
+        .app-icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: white;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .bg-gradient-blue { background: linear-gradient(135deg, #0d6efd, #0dcaf0); }
+        .bg-gradient-orange { background: linear-gradient(135deg, #fd7e14, #ffc107); }
+        .bg-gradient-red { background: linear-gradient(135deg, #dc3545, #d63384); }
+        .bg-gradient-green { background: linear-gradient(135deg, #198754, #20c997); }
+
+        /* Category Title */
+        .category-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin: 40px 0 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-title i { margin-right: 10px; }
+
+        /* Search Box */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-input-group {
+            background: white;
+            padding: 5px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid #e9ecef;
+        }
+    
 /* Kết thúc file styles.css */

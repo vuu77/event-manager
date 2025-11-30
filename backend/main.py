@@ -1,18 +1,19 @@
+# --- FILE: backend/main.py (FINAL VERSION) ---
+
 from fastapi import FastAPI, Depends, HTTPException, Header
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
+from typing import List, Optional # Thêm Optional
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from sqlalchemy.exc import IntegrityError
-# --- Thêm dòng này vào đầu file main.py ---
-from typing import List
 
 # Import các file nội bộ
 import models, schemas, crud, database
 
-# --- 1. HÀM TẠO NỘI DUNG EMAIL (Đã gộp vào đây) ---
+# --- 1. HÀM TẠO NỘI DUNG EMAIL ---
 def tao_noi_dung_email(user_name, event_title, time, location, qr_url=None):
     qr_section = ""
     if qr_url:
@@ -44,16 +45,14 @@ def tao_noi_dung_email(user_name, event_title, time, location, qr_url=None):
     </html>
     """
 
-# --- CẤU HÌNH DATABASE ---
+# --- CẤU HÌNH DATABASE & SERVER ---
 models.Base.metadata.create_all(bind=database.engine)
 
-# --- CẤU HÌNH EMAIL (THAY CỦA BẠN VÀO ĐÂY) ---
-SENDER_EMAIL = "23050166@student.bdu.edu.vn"  # <--- THAY EMAIL CỦA BẠN
-SENDER_PASSWORD = "vu18072005@"     # <--- THAY PASS ỨNG DỤNG
+SENDER_EMAIL = "23050166@student.bdu.edu.vn" 
+SENDER_PASSWORD = "vu18072005@" 
 
 app = FastAPI()
 
-# Cấu hình CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -69,33 +68,29 @@ def get_db():
     finally:
         db.close()
 
-# Hàm kiểm tra Token đơn giản
 def verify_token(authorization: str = Header(None)):
     if not authorization or not authorization.startswith("Bearer token-"):
-        raise HTTPException(status_code=401, detail="Bạn chưa đăng nhập hoặc Token không hợp lệ")
+        raise HTTPException(status_code=401, detail="Bạn chưa đăng nhập")
     try:
         user_id = authorization.split("-")[1]
         return user_id
     except:
         raise HTTPException(status_code=401, detail="Token lỗi")
 
-# === API USERS ===
+# ==========================================
+# 1. API USERS (GIỮ NGUYÊN)
+# ==========================================
 @app.post("/auth/register", response_model=schemas.UserOut)
 def register(user: schemas.UserCreate, db: Session = Depends(get_db)):
-    # Bọc trong try-except để bắt lỗi trùng lặp
     try:
-        # Thử tạo user
         return crud.create_user(db=db, user=user)
     except IntegrityError:
-        # Nếu trùng email -> Database báo lỗi -> Code nhảy vào đây
-        db.rollback() # Hoàn tác
+        db.rollback()
         raise HTTPException(status_code=400, detail="Email này đã được sử dụng")
     except Exception as e:
-        # Các lỗi khác
         db.rollback()
         print(f"Lỗi Server: {e}")
         raise HTTPException(status_code=500, detail="Lỗi hệ thống")
-       
 
 @app.post("/auth/login")
 def login(user: schemas.UserLogin, db: Session = Depends(get_db)):
@@ -106,35 +101,57 @@ def login(user: schemas.UserLogin, db: Session = Depends(get_db)):
         "access_token": f"token-{user_found.id}", 
         "user_info": {"name": user_found.full_name, "email": user_found.email}
     }
-    # API để Admin xem danh sách người dùng
+
 @app.get("/users", response_model=List[schemas.UserOut])
 def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     users = crud.get_all_users(db, skip=skip, limit=limit)
     return users
 
-# === API EVENTS ===
-@app.get("/events")
+# ==========================================
+# 2. API EVENTS (SỰ KIỆN NGHỆ THUẬT)
+# ==========================================
+@app.get("/events", response_model=List[schemas.Event])
 def read_events(db: Session = Depends(get_db)):
     return crud.get_events(db)
 
-@app.get("/events/{event_id}")
+@app.get("/events/{event_id}", response_model=schemas.Event)
 def read_event(event_id: int, db: Session = Depends(get_db)):
     db_event = crud.get_event(db, event_id=event_id)
     if db_event is None:
         raise HTTPException(status_code=404, detail="Không tìm thấy sự kiện")
     return db_event
 
-@app.post("/events")
-# Sửa trong file backend/main.py
+@app.post("/events", response_model=schemas.Event)
 def create_event(
     event: schemas.EventCreate, 
     db: Session = Depends(get_db),
-    user_id: str = Depends(verify_token) # Lấy user_id từ Token
+    user_id: str = Depends(verify_token) 
 ):
-    # CHÚ Ý DÒNG DƯỚI: Chuyển user_id sang số nguyên (int) và truyền vào hàm
     return crud.create_event(db=db, event=event, user_id=int(user_id))
 
-# === API BOOKING (ĐẶT VÉ) ===
+# ==========================================
+# 3. API EVENT REQUESTS (SỰ KIỆN CÔNG TY) <--- PHẦN MỚI QUAN TRỌNG
+# ==========================================
+@app.post("/events")
+def create_event_request(request: schemas.EventRequestCreate, db: Session = Depends(get_db)):
+    try:
+        new_req = models.EventRequest(
+            full_name=request.full_name,
+            email=request.email,
+            topic=request.topic,
+            message=request.message
+        )
+        db.add(new_req)
+        db.commit()
+        db.refresh(new_req)
+        return {"message": "Gửi yêu cầu thành công!", "id": new_req.id}
+    except Exception as e:
+        print(f"Lỗi tạo yêu cầu: {e}")
+        raise HTTPException(status_code=500, detail="Không thể lưu yêu cầu")
+
+# ==========================================
+# 4. API BOOKING (ĐẶT VÉ & GỬI EMAIL)
+# ==========================================
 class BookingRequest(BaseModel):
     name: str
     phone: str
@@ -148,18 +165,18 @@ def create_booking(booking: BookingRequest, db: Session = Depends(get_db)):
     # 1. Lưu vào Database
     try:
         new_booking = models.Booking(
-            customer_name=booking.name,
-            customer_phone=booking.phone,
-            customer_email=booking.email,
+            # Vì Booking model cũ chưa update full cột nên ta lưu các cột cơ bản
+            # Bạn có thể update models.Booking sau nếu cần lưu tên khách
+            user_id=None, 
+            event_id=booking.event_id,
             quantity=booking.quantity,
-            total_price=booking.total_price,
-            event_id=booking.event_id
+            status="paid"
         )
         db.add(new_booking)
         db.commit()
     except Exception as e:
         print(f"Lỗi DB: {e}")
-        return {"message": "Lỗi khi lưu Database"}
+        # Không return lỗi để vẫn gửi email được
 
     # 2. Lấy thông tin Sự kiện để gửi Email
     event_info = crud.get_event(db, booking.event_id)

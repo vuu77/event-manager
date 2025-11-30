@@ -1,127 +1,104 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Chi Tiết Sự Kiện - ERPVIET</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sự Kiện</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/features.css">
 </head>
 <body style="background-color: #f8f9fa;">
 
-    <div class="top-bar text-end px-5" style="background: #903275ff; color: white; padding: 5px 0;">
-        <span class="me-3"><i class="fa-solid fa-phone"></i> Hotline: 070602 3978</span>
-        <span id="user-section"><a href="login.html" class="text-white text-decoration-none hover-underline"><i class="fa-solid fa-user"></i> Đăng Nhập</a></span>
-    </div>
-
-    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--main-purple); font-size: 1.5rem;"><i class="fa-brands fa-slack me-2"></i>ERPVIET</a>
-            <div class="ms-auto"><a href="index.html" class="btn btn-outline-secondary btn-sm rounded-pill px-3"><i class="fa-solid fa-arrow-left me-2"></i> Quay lại</a></div>
+            <a class="navbar-brand fw-bold" href="index.html" style="color: #6f42c1;">
+                <i class="fa-brands fa-slack me-2"></i>ElipVIET
+            </a>
+            <div class="collapse navbar-collapse justify-content-end" id="mainMenu">
+                <span id="user-section"></span>
+            </div>
         </div>
     </nav>
 
-    <div style="background: #222; height: 350px; position: relative; overflow: hidden;">
-        <img src="https://source.unsplash.com/1600x900/?concert" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
-        <div class="position-absolute bottom-0 start-0 w-100 p-4" style="background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
-            <div class="container text-white">
-                <span class="badge bg-warning text-dark mb-2 fw-bold px-3">Sắp diễn ra</span>
-                <h1 class="fw-bold display-5" id="detailTitle">Đang tải...</h1>
-                <p class="mb-0 fs-5"><i class="fa-solid fa-location-dot me-2 text-warning"></i> <span id="detailLocation">...</span></p>
-            </div>
-        </div>
-    </div>
-
     <div class="container py-5">
-        <div class="row g-5">
+        <a href="index.html" class="text-decoration-none text-muted mb-4 d-inline-block">
+            <i class="fa-solid fa-arrow-left me-2"></i>Quay lại
+        </a>
+
+        <div class="row g-4">
             <div class="col-lg-8">
-                <div class="bg-white p-4 rounded shadow-sm border mb-4">
-                    <h4 class="fw-bold text-purple"><i class="fa-solid fa-circle-info me-2"></i>Giới thiệu</h4>
-                    <p id="detailDescription" class="text-secondary">...</p>
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+                    <img id="detailImage" src="" class="w-100 object-fit-cover" style="height: 400px; background: #eee;">
                 </div>
-                <div class="bg-white p-4 rounded shadow-sm border">
-                    <h4 class="fw-bold text-purple"><i class="fa-solid fa-microphone-lines me-2"></i>Khách mời</h4>
-                    <div class="row g-3" id="performersContainer"><p class="text-muted">...</p></div>
+                <div class="bg-white p-4 rounded-4 shadow-sm">
+                    <h4 class="fw-bold text-dark mb-3">Giới thiệu sự kiện</h4>
+                    <p id="detailDescription" class="text-muted" style="line-height: 1.8; white-space: pre-line;">...</p>
                 </div>
             </div>
 
             <div class="col-lg-4">
-                <div class="card border-0 shadow-sm sticky-top" style="top: 100px;">
-                    <div class="card-header bg-white pt-4 pb-0"><h5 class="fw-bold">Thông tin vé</h5></div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between mb-3"><span class="text-muted">Ngày:</span><span class="fw-bold" id="detailDate">...</span></div>
-                        <div class="d-flex justify-content-between mb-4"><span class="text-muted">Số vé:</span><span class="fw-bold text-danger fs-5" id="detailCapacity">0</span></div>
-                        
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-purple py-2 fw-bold" onclick="openBookingModal()">
-                                <i class="fa-solid fa-cart-shopping me-2"></i> ĐẶT VÉ NGAY
-                            </button>
-                        </div>
+                <div class="card border-0 shadow-sm rounded-4 p-4 sticky-top" style="top: 100px;">
+                    <h3 id="detailTitle" class="fw-bold text-purple mb-3">...</h3>
+                    <p class="text-muted small mb-3">
+                        <i class="fa-solid fa-user-tie me-1"></i> BTC: <strong id="detailOrganizer">...</strong>
+                    </p>
+                    <hr>
+                    <div class="mb-3">
+                        <small class="text-muted fw-bold text-uppercase">Thời gian</small>
+                        <div id="detailDate" class="fw-bold fs-5 text-dark">...</div>
                     </div>
+                    <div class="mb-3">
+                        <small class="text-muted fw-bold text-uppercase">Địa điểm</small>
+                        <div id="detailLocation" class="fw-bold text-dark">...</div>
+                    </div>
+                    <div class="mb-4">
+                        <small class="text-muted fw-bold text-uppercase">Vé còn lại</small>
+                        <div id="detailCapacity" class="fw-bold text-warning">...</div>
+                    </div>
+
+                    <button onclick="openBookingModal()" class="btn btn-purple w-100 py-3 fw-bold rounded-pill shadow-sm">
+                        ĐẶT VÉ NGAY
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="paymentModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="paymentModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-purple text-white">
-                    <h5 class="modal-title fw-bold" id="modalTitle">Thông Tin Khách Hàng</h5>
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header bg-purple text-white border-0">
+                    <h5 class="modal-title fw-bold" id="modalTitle">Thông Tin Đặt Vé</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body p-4">
                     
                     <div id="step1-form">
-                        <form id="bookingForm" onsubmit="return false;">
-                            <div class="mb-3">
-                                <label class="fw-bold small">Họ và tên:</label>
-                                <input type="text" id="cusName" class="form-control" placeholder="Nhập họ tên" required>
+                        <div class="mb-3"><label class="fw-bold small">Họ tên</label><input type="text" id="cusName" class="form-control bg-light"></div>
+                        <div class="mb-3"><label class="fw-bold small">SĐT</label><input type="text" id="cusPhone" class="form-control bg-light"></div>
+                        <div class="mb-3"><label class="fw-bold small">Email</label><input type="email" id="cusEmail" class="form-control bg-light"></div>
+                        <div class="bg-light p-3 rounded mb-3 border">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold">Số lượng:</span>
+                                <input type="number" id="cusQty" class="form-control w-25 text-center fw-bold" value="1" min="1" onchange="calculateBookingTotal()">
                             </div>
-                            <div class="row">
-                                <div class="col-6 mb-3">
-                                    <label class="fw-bold small">Số điện thoại:</label>
-                                    <input type="tel" id="cusPhone" class="form-control" placeholder="09xx" required>
-                                </div>
-                                <div class="col-6 mb-3">
-                                    <label class="fw-bold small">Số lượng vé:</label>
-                                    <input type="number" id="cusQty" class="form-control fw-bold text-center" value="1" min="1" max="50" oninput="calculateLocalTotal()">
-                                </div>
+                            <div class="d-flex justify-content-between align-items-center text-purple mt-2">
+                                <span class="fw-bold">Tạm tính:</span>
+                                <span id="totalPriceDisplay" class="fs-4 fw-bolder">125.000 đ</span>
                             </div>
-                            <div class="mb-3">
-                                <label class="fw-bold small">Email nhận vé:</label>
-                                <input type="email" id="cusEmail" class="form-control" placeholder="email@gmail.com" required>
-                            </div>
-
-                            <div class="alert alert-secondary d-flex justify-content-between align-items-center">
-                                <span>Thành tiền:</span>
-                                <span class="fw-bold text-purple fs-4" id="localPriceDisplay">125.000 đ</span>
-                            </div>
-
-                            <div class="d-grid">
-                                <button class="btn btn-purple fw-bold py-2" onclick="goToStep2Local()">
-                                    Tiếp tục thanh toán <i class="fa-solid fa-arrow-right ms-2"></i>
-                                </button>
-                            </div>
-                        </form>
+                        </div>
+                        <button onclick="goToStep2()" class="btn btn-purple w-100 py-2 fw-bold">Tiếp tục</button>
                     </div>
 
                     <div id="step2-qr" class="d-none text-center">
-                        <p class="mb-2">Quét mã để thanh toán:</p>
-                        <div class="border p-2 d-inline-block rounded mb-3 bg-white shadow-sm">
-                            <img id="qrImage" src="" alt="QR Code" class="img-fluid" style="max-width: 250px;">
-                        </div>
-                        <div class="alert alert-warning small text-start">
-                            Số tiền: <strong id="qrAmount" class="text-danger">...</strong><br>
-                            Nội dung: <strong id="qrContent">...</strong>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <button class="btn btn-outline-secondary btn-sm" onclick="backToStep1Local()"><i class="fa-solid fa-arrow-left"></i> Quay lại</button>
-                            
-                            <button id="btnConfirm" class="btn btn-success fw-bold" onclick="finishBookingLocal()">
-                                <i class="fa-solid fa-check me-2"></i> Đã thanh toán
-                            </button>
+                        <div class="alert alert-warning small border-0 mb-2">Quét mã để thanh toán</div>
+                        <img id="qrImage" src="" class="img-fluid border rounded mb-3 shadow-sm" style="max-height: 250px;">
+                        <h4 class="fw-bold text-danger mb-1" id="qrAmount">0 đ</h4>
+                        <p class="text-muted small mb-4">Nội dung: <span id="qrContent" class="fw-bold text-dark">...</span></p>
+                        <div class="d-flex gap-2">
+                            <button onclick="backToStep1()" class="btn btn-outline-secondary w-50">Quay lại</button>
+                            <button id="btnConfirmBooking" onclick="finishBooking()" class="btn btn-success w-50 fw-bold">Đã thanh toán</button>
                         </div>
                     </div>
 
@@ -132,19 +109,16 @@
 
     <div class="modal fade" id="successModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content text-center p-4">
-                <div class="modal-body">
-                    <div class="mb-3 text-success" style="font-size: 4rem;"><i class="fa-regular fa-circle-check"></i></div>
-                    <h3 class="fw-bold text-success">Thành Công!</h3>
-                    <p class="text-muted">Vé điện tử đã được gửi tới Email của bạn.</p>
-                    <button class="btn btn-purple px-5 mt-3" onclick="window.location.reload()">OK</button>
-                </div>
+            <div class="modal-content border-0 rounded-4 text-center p-4">
+                <div class="text-success mb-3" style="font-size: 3rem;"><i class="fa-solid fa-circle-check"></i></div>
+                <h4 class="fw-bold mb-2">Đặt Vé Thành Công!</h4>
+                <p class="text-muted">Vé đã gửi tới: <strong id="successEmail">...</strong></p>
+                <button class="btn btn-primary rounded-pill px-5" onclick="window.location.href='index.html'">Về Trang Chủ</button>
             </div>
         </div>
     </div>
 
     <script src="assets/scripts/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

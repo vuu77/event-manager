@@ -1,0 +1,258 @@
+/* --- FILE: assets/css/features.css (BẢN FULL FIX LỖI) --- */
+
+/* =========================================
+   1. CẤU HÌNH CHUNG (GLOBAL)
+   ========================================= */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* =========================================
+   2. NAVBAR & LOGO (TÔNG TÍM HỒNG)
+   ========================================= */
+.navbar-custom {
+    background-color: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.nav-link {
+    font-weight: 700;
+    color: #555 !important;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active { 
+    color: #8e44ad !important; /* Tím đậm khi hover/active */
+}
+
+/* Logo ElipVIET */
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #c9499a !important; /* Chữ màu Hồng Tím */
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand i {
+    color: #803a6f; /* Icon màu Tím Đậm */
+    font-size: 1.8rem;
+    margin-right: 10px;
+    transition: transform 0.3s;
+}
+
+.navbar-brand:hover i {
+    transform: rotate(20deg);
+}
+
+/* =========================================
+   3. PHẦN DANH SÁCH TÍNH NĂNG (MENU TRÒN)
+   ========================================= */
+.feature-section {
+    padding: 60px 0;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.category-header {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #f3e5f5; /* Kẻ dưới màu tím nhạt */
+    padding-bottom: 10px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #444;
+    margin-bottom: 15px;
+    transition: all 0.2s ease;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.feature-item:hover {
+    background-color: #fcf0fb; /* Nền tím siêu nhạt khi hover */
+    transform: translateX(5px);
+    color: #8e44ad;
+}
+
+.icon-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+/* Màu Icon (Giữ nguyên để phân biệt các mục, nhưng làm dịu lại) */
+.icon-red { background-color: #ffebee; color: #d32f2f; }
+.icon-blue { background-color: #e3f2fd; color: #1976d2; }
+.icon-green { background-color: #e8f5e9; color: #388e3c; }
+.icon-yellow { background-color: #fff8e1; color: #fbc02d; }
+.icon-teal { background-color: #e0f2f1; color: #00897b; }
+.icon-purple { background-color: #f3e5f5; color: #8e44ad; }
+
+.feature-text {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* =========================================
+   4. CHI TIẾT TÍNH NĂNG (3 ẢNH SO LE - QUAN TRỌNG)
+   ========================================= */
+.detail-section {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 300; /* Font mỏng sang trọng */
+    color: #333;
+    margin-bottom: 80px;
+    text-align: center;
+    position: relative;
+}
+
+/* Khối bao quanh mỗi tính năng */
+.feature-block {
+    margin-bottom: 100px; /* Khoảng cách giữa các khối lớn */
+}
+
+.feature-heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.feature-desc {
+    color: #555;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+    text-align: justify; /* Căn đều văn bản cho đẹp */
+}
+
+/* Danh sách dấu tích (Checklist) */
+.check-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.check-list li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    color: #444;
+    font-size: 1rem;
+}
+
+/* Tạo dấu tích màu tím */
+.check-list li::before {
+    content: "\f00c"; /* Mã icon dấu tích */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: #f3e5f5; /* Nền tròn tím nhạt */
+    color: #8e44ad; /* Dấu tích tím đậm */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+/* Khung ảnh Laptop/Mô tả */
+.feature-img-wrapper {
+    position: relative;
+    padding: 15px;
+    border-radius: 20px;
+    /* Hiệu ứng nền bóng phía sau ảnh */
+    background: radial-gradient(circle, rgba(142, 68, 173, 0.1) 0%, rgba(255,255,255,0) 70%);
+}
+
+.feature-img {
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12); /* Đổ bóng mịn */
+    transition: transform 0.4s ease;
+    width: 100%;
+    display: block;
+    background: #fff; /* Viền trắng cho ảnh */
+    padding: 5px;
+}
+
+.feature-img:hover {
+    transform: translateY(-10px); /* Bay lên khi di chuột */
+}
+
+/* Nút bấm xem chi tiết */
+.btn-purple-outline {
+    border: 2px solid #8e44ad;
+    color: #8e44ad;
+    background: transparent;
+    font-weight: 600;
+    padding: 10px 30px;
+    border-radius: 50px;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-purple-outline:hover {
+    background: #8e44ad;
+    color: white;
+    box-shadow: 0 5px 15px rgba(142, 68, 173, 0.3);
+}
+
+/* =========================================
+   5. CÁC STYLE PHỤ TRỢ (Để không bị lỗi trang khác)
+   ========================================= */
+/* Style cho thẻ Card ở trang Giải pháp/Lợi ích */
+.solution-card, .benefit-card, .topic-card {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 16px;
+    padding: 30px;
+    height: 100%;
+    transition: all 0.3s;
+}
+.solution-card:hover, .benefit-card:hover, .topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(111, 66, 193, 0.1);
+    border-color: #c9499a;
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid #eee;
+    margin-top: 80px;
+    padding: 40px 0;
+    background: #fcfcfc;
+    text-align: center;
+    color: #666;
+}
