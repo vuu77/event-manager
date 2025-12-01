@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 import urllib.parse
 
 # 1. CẤU HÌNH THÔNG TIN KẾT NỐI
-SERVER = 'TRUNGNGUYEN\SQLEXPRESS' # <-- Thay tên Server của bạn vào đây (xem hướng dẫn lấy tên bên dưới)
+SERVER = r'TRUNGNGUYEN\SQLEXPRESS' # <-- Thay tên Server của bạn vào đây (xem hướng dẫn lấy tên bên dưới)
 DATABASE = 'ERPVietDB'             # Tên database bạn vừa tạo script
 USERNAME = 'sa'                    # Tài khoản đăng nhập SQL
 PASSWORD = '26102002'         # Mật khẩu SQL của bạn

@@ -132,7 +132,12 @@ def create_event(
 # ==========================================
 # 3. API EVENT REQUESTS (SỰ KIỆN CÔNG TY) <--- PHẦN MỚI QUAN TRỌNG
 # ==========================================
-@app.post("/events")
+# ==========================================
+# 3. API EVENT REQUESTS (SỰ KIỆN CÔNG TY)
+# ==========================================
+
+# --- SỬA DÒNG NÀY (Đổi "/events" thành "/event-requests") ---
+@app.post("/event-requests") 
 def create_event_request(request: schemas.EventRequestCreate, db: Session = Depends(get_db)):
     try:
         new_req = models.EventRequest(
@@ -207,3 +212,43 @@ def create_booking(booking: BookingRequest, db: Session = Depends(get_db)):
     except Exception as e:
         print(f"Lỗi Email: {e}")
         return {"message": "Saved but Email failed"}
+    # --- Thêm vào cuối file main.py ---
+
+# API lấy danh sách yêu cầu công ty (Để hiển thị lên Web)
+@app.get("/event-requests")
+def read_event_requests(db: Session = Depends(get_db)):
+    requests = db.query(models.EventRequest).all()
+    return requests
+
+# API tạo yêu cầu công ty (Để người dùng gửi lên)
+@app.post("/event-requests")
+def create_event_request(request: schemas.EventRequestCreate, db: Session = Depends(get_db)):
+    return crud.create_event_request(db, request)
+# --- Thêm vào cuối file backend/main.py ---
+
+# API TẠO ĐƠN HÀNG BÁO GIÁ (MUA PHẦN MỀM)
+class OrderCreate(BaseModel):
+    total_amount: int
+    details: str  # Lưu chi tiết gói mua (Số user, chu kỳ, app thêm...)
+
+@app.post("/orders")
+def create_order(order: OrderCreate, db: Session = Depends(get_db), user_id: str = Depends(verify_token)):
+    try:
+        # 1. Lưu đơn hàng
+        new_order = models.Order(
+            user_id=int(user_id),
+            total_amount=order.total_amount,
+            status="Pending"
+        )
+        db.add(new_order)
+        db.commit()
+        db.refresh(new_order)
+        
+        # 2. (Tùy chọn) Lưu chi tiết vào bảng order_details hoặc gửi email ở đây
+        # Tạm thời print ra console
+        print(f"Đơn hàng mới: {order.details} - Tổng: {order.total_amount}")
+        
+        return {"message": "Tạo đơn hàng thành công!", "order_id": new_order.id}
+    except Exception as e:
+        print(f"Lỗi Order: {e}")
+        raise HTTPException(status_code=500, detail="Lỗi tạo đơn hàng")

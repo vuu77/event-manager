@@ -6,8 +6,9 @@
     <title>Tạo Sự Kiện - ERPVIET</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="assets/css/features.css"> <link rel="stylesheet" href="assets/css/styles.css">   </head>
+    <link rel="stylesheet" href="assets/css/features.css"> 
+    <link rel="stylesheet" href="assets/css/styles.css">   
+</head>
 <body style="background-color: #f4f6f9;">
 
     <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
@@ -39,7 +40,7 @@
                 <div class="selection-card" onclick="showForm('company')">
                     <div class="select-icon"><i class="fa-solid fa-briefcase"></i></div>
                     <h4 class="fw-bold">Sự Kiện Công Ty</h4>
-                    <p class="text-muted mb-0">Hội thảo, Ký kết hợp đồng, Gặp gỡ đối tác. <br> (Cần liên hệ tư vấn)</p>
+                    <p class="text-muted mb-0">Hội thảo, Tiệc tất niên, Gặp gỡ đối tác. <br> (Gửi yêu cầu báo giá)</p>
                 </div>
             </div>
 
@@ -52,7 +53,6 @@
             </div>
         </div>
 
-
         <div id="companyForm" class="d-none animate-fade">
             <div class="text-start mb-3">
                 <span class="btn-back" onclick="goBack()"><i class="fa-solid fa-arrow-left me-2"></i> Quay lại chọn</span>
@@ -63,63 +63,70 @@
                     <div class="col-lg-4">
                         <div class="contact-info-box">
                             <h3 class="fw-bold mb-4">Thông tin liên hệ</h3>
-                            <p class="mb-5 opacity-75">Hãy để lại thông tin, chuyên viên tư vấn sự kiện doanh nghiệp sẽ liên hệ lại trong vòng 24h.</p>
-                            
-                            <div class="contact-info-item">
-                                <i class="fa-solid fa-location-dot"></i>
-                                <div>
-                                    <h6 class="fw-bold mb-1">Địa chỉ:</h6>
-                                    <span class="small">Tòa nhà Tech, Thuận An, Bình Dương</span>
-                                </div>
-                            </div>
+                            <p class="mb-5 opacity-75"> chúng tôi sẽ lên kế hoạch và báo giá tốt nhất cho doanh nghiệp.</p>
                             <div class="contact-info-item">
                                 <i class="fa-solid fa-phone"></i>
-                                <div>
-                                    <h6 class="fw-bold mb-1">Hotline:</h6>
-                                    <span class="small">070602 3978</span>
-                                </div>
+                                <div><h6 class="fw-bold mb-1">Hotline:</h6><span class="small">070602 3978</span></div>
                             </div>
                             <div class="contact-info-item">
                                 <i class="fa-solid fa-envelope"></i>
-                                <div>
-                                    <h6 class="fw-bold mb-1">Email:</h6>
-                                    <span class="small">vu662102@gmail.com</span>
-                                </div>
+                                <div><h6 class="fw-bold mb-1">Email:</h6><span class="small">vu662102@gmail.com</span></div>
                             </div>
                         </div>
                     </div>
 
-                   <div class="col-lg-8">
-                <div class="contact-form-box">
-                    <h3 class="fw-bold mb-4 text-dark">Gửi yêu cầu tổ chức</h3>
-                    
-                    <form onsubmit="submitCompanyForm(event)">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="small fw-bold text-muted">Họ tên</label>
-                                <input type="text" id="comName" class="form-control" placeholder="Nhập họ tên..." required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="small fw-bold text-muted">Email công ty</label>
-                                <input type="email" id="comEmail" class="form-control" placeholder="name@company.com" required>
-                            </div>
+                    <div class="col-lg-8">
+                        <div class="contact-form-box">
+                            <h3 class="fw-bold mb-4 text-dark">Gửi yêu cầu tổ chức</h3>
+                            
+                            <form onsubmit="submitCompanyForm(event)">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="small fw-bold text-muted">Họ tên người liên hệ</label>
+                                        <input type="text" id="comName" class="form-control" placeholder="Nguyễn Văn A" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="small fw-bold text-muted">Email liên hệ</label>
+                                        <input type="email" id="comEmail" class="form-control" placeholder="name@company.com" required>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="small fw-bold text-muted">Tên Công Ty / Tổ chức</label>
+                                        <input type="text" id="comCompany" class="form-control" placeholder="Công ty TNHH ABC..." required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="small fw-bold text-muted">Địa điểm tổ chức</label>
+                                        <input type="text" id="comLocation" class="form-control" placeholder="Hà Nội, TP. Hồ Chí Minh..." required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="small fw-bold text-muted">Số lượng khách dự kiến</label>
+                                        <input type="number" id="comCapacity" class="form-control" placeholder="VD: 100" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="small fw-bold text-muted">Thời gian tổ chức dự kiến</label>
+                                    <input type="datetime-local" id="comDate" class="form-control" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="small fw-bold text-muted">Chủ đề sự kiện</label>
+                                    <input type="text" id="comTopic" class="form-control" placeholder="VD: Tiệc tất niên, Hội nghị..." required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="small fw-bold text-muted">Nội dung / Yêu cầu thêm</label>
+                                    <textarea id="comMsg" class="form-control" rows="3" placeholder="Ghi chú về thực đơn, âm thanh, ánh sáng..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-purple px-5 fw-bold py-2 rounded-pill">Gửi Yêu Cầu</button>
+                            </form>
                         </div>
-                        <div class="mb-3">
-                            <label class="small fw-bold text-muted">Chủ đề sự kiện</label>
-                            <input type="text" id="comTopic" class="form-control" placeholder="VD: Hội nghị khách hàng..." required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="small fw-bold text-muted">Nội dung chi tiết</label>
-                            <textarea id="comMsg" class="form-control" rows="4" placeholder="Mô tả quy mô, ngân sách..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-purple px-5 fw-bold py-2 rounded-pill">Gửi Yêu Cầu</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
- </div>
-
 
         <div id="artForm" class="d-none animate-fade">
             <div class="text-start mb-3">
@@ -139,6 +146,11 @@
                                 <input type="text" id="evtTitle" class="form-control" placeholder="Ví dụ: Đại nhạc hội Mùa Hè" required>
                             </div>
 
+                            <div class="mb-3">
+                                <label class="fw-bold small text-muted">Đơn vị / Công ty tổ chức</label>
+                                <input type="text" id="evtOrganizerName" class="form-control" placeholder="VD: SpaceSpeakers, VTV..." required>
+                            </div>
+
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label class="fw-bold small text-muted">Địa điểm</label>
@@ -148,8 +160,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label class="fw-bold small text-muted">Ngày tổ chức</label>
-                                    <input type="date" id="evtDate" class="form-control" required>
+                                    <label class="fw-bold small text-muted">Ngày & Giờ tổ chức</label>
+                                    <input type="datetime-local" id="evtDate" class="form-control" required>
                                 </div>
                             </div>
 
@@ -172,15 +184,13 @@
 
                             <div class="mb-4">
                                 <label class="fw-bold small text-muted">Mô tả chi tiết</label>
-                                <textarea id="evtDesc" class="form-control" rows="5" placeholder="Nhập nội dung sự kiện..."></textarea>
+                                <textarea id="evtDesc" class="form-control" rows="4" placeholder="Nhập nội dung sự kiện..."></textarea>
                             </div>
 
                             <div class="mb-3">
                                 <label class="fw-bold small text-muted">Ảnh Banner (Link ảnh)</label>
                                 <input type="text" id="evtImage" class="form-control" placeholder="https://...">
                             </div>
-
-                            <input type="hidden" id="organizer_id" value="1">
 
                             <button type="submit" class="btn btn-purple w-100 fw-bold py-2 text-uppercase shadow-sm">
                                 <i class="fa-solid fa-save me-2"></i> Lưu Sự Kiện
@@ -193,10 +203,43 @@
 
     </div>
 
-    <footer class="bg-dark text-light py-5 mt-auto">
-        <div class="container text-center">
-            <p>&copy; 2025 ERPVIET System. All rights reserved.</p>
+    <div class="modal fade" id="companyDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow">
+                <div class="modal-header bg-warning text-dark border-0">
+                    <h5 class="modal-title fw-bold"><i class="fa-solid fa-briefcase me-2"></i>Chi Tiết Sự Kiện Doanh Nghiệp</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <h3 id="modalComTopic" class="text-purple fw-bold mb-3">Chủ đề...</h3>
+                    
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-light rounded-circle p-3 me-3 text-warning"><i class="fa-solid fa-building fa-xl"></i></div>
+                        <div><p class="small text-muted mb-0">Đơn vị tổ chức</p><h6 id="modalComName" class="fw-bold mb-0">...</h6></div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-light rounded-circle p-3 me-3 text-primary"><i class="fa-solid fa-clock fa-xl"></i></div>
+                        <div><p class="small text-muted mb-0">Thời gian tổ chức</p><h6 id="modalComDate" class="fw-bold mb-0">...</h6></div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-light rounded-circle p-3 me-3 text-dark"><i class="fa-solid fa-users fa-xl"></i></div>
+                        <div><p class="small text-muted mb-0">Quy mô</p><h6 id="modalComCapacity" class="fw-bold mb-0">...</h6></div>
+                    </div>
+                    
+
+                    <div class="p-3 bg-light rounded-3">
+                        <h6 class="fw-bold text-dark mb-2">Nội dung chi tiết:</h6>
+                        <p id="modalComMsg" class="text-secondary mb-0" style="white-space: pre-line;">...</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <footer class="bg-dark text-light py-5 mt-auto">
+        <div class="container text-center"><p>&copy; 2025 ERPVIET System.</p></div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/scripts/app.js"></script>

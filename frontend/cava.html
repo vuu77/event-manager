@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Tiết Sự Kiện</title>
+    <title>Chi Tiết Sự Kiện - ElipVIET</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/features.css">
-</head>
+    <link rel="stylesheet" href="assets/css/styles.css"> </head>
 <body style="background-color: #f8f9fa;">
 
     <nav class="navbar navbar-expand-lg navbar-custom sticky-top bg-white shadow-sm">
@@ -22,44 +21,70 @@
     </nav>
 
     <div class="container py-5">
-        <a href="index.html" class="text-decoration-none text-muted mb-4 d-inline-block">
-            <i class="fa-solid fa-arrow-left me-2"></i>Quay lại
+        <a href="index.html" class="text-decoration-none text-muted mb-4 d-inline-block fw-bold">
+            <i class="fa-solid fa-arrow-left me-2"></i>Quay lại danh sách
         </a>
 
         <div class="row g-4">
             <div class="col-lg-8">
-                <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
-                    <img id="detailImage" src="" class="w-100 object-fit-cover" style="height: 400px; background: #eee;">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4 position-relative">
+                    <img id="detailImage" src="" class="w-100 object-fit-cover" style="height: 400px; background: #eee;" onerror="this.src='https://crmviet.vn/wp-content/uploads/2019/04/phan-mem-quan-ly-du-an.png'">
+                    
+                    <span id="eventTypeBadge" class="position-absolute top-0 start-0 m-3 badge bg-purple fs-6 shadow">
+                        Sự kiện
+                    </span>
                 </div>
+
                 <div class="bg-white p-4 rounded-4 shadow-sm">
-                    <h4 class="fw-bold text-dark mb-3">Giới thiệu sự kiện</h4>
-                    <p id="detailDescription" class="text-muted" style="line-height: 1.8; white-space: pre-line;">...</p>
+                    <h4 class="fw-bold text-dark mb-3 border-bottom pb-2">
+                        <i class="fa-solid fa-circle-info me-2 text-primary"></i>Thông tin chi tiết
+                    </h4>
+                    <p id="detailDescription" class="text-secondary" style="line-height: 1.8; white-space: pre-line; font-size: 1.05rem;">
+                        Đang tải nội dung...
+                    </p>
                 </div>
             </div>
 
             <div class="col-lg-4">
                 <div class="card border-0 shadow-sm rounded-4 p-4 sticky-top" style="top: 100px;">
-                    <h3 id="detailTitle" class="fw-bold text-purple mb-3">...</h3>
+                    
+                    <h3 id="detailTitle" class="fw-bold text-purple mb-1">...</h3>
                     <p class="text-muted small mb-3">
-                        <i class="fa-solid fa-user-tie me-1"></i> BTC: <strong id="detailOrganizer">...</strong>
+                        <i class="fa-solid fa-user-tie me-1"></i> Tổ chức bởi: <strong id="detailOrganizer" class="text-dark">...</strong>
                     </p>
+                    
                     <hr>
-                    <div class="mb-3">
-                        <small class="text-muted fw-bold text-uppercase">Thời gian</small>
-                        <div id="detailDate" class="fw-bold fs-5 text-dark">...</div>
-                    </div>
-                    <div class="mb-3">
-                        <small class="text-muted fw-bold text-uppercase">Địa điểm</small>
-                        <div id="detailLocation" class="fw-bold text-dark">...</div>
-                    </div>
-                    <div class="mb-4">
-                        <small class="text-muted fw-bold text-uppercase">Vé còn lại</small>
-                        <div id="detailCapacity" class="fw-bold text-warning">...</div>
+
+                    <div class="mb-3 d-flex align-items-center">
+                        <div class="bg-light p-3 rounded-circle me-3 text-primary"><i class="fa-solid fa-clock fa-lg"></i></div>
+                        <div>
+                            <small class="text-muted fw-bold text-uppercase d-block">Thời gian</small>
+                            <span id="detailDate" class="fw-bold text-dark">...</span>
+                        </div>
                     </div>
 
-                    <button onclick="openBookingModal()" class="btn btn-purple w-100 py-3 fw-bold rounded-pill shadow-sm">
-                        ĐẶT VÉ NGAY
-                    </button>
+                    <div class="mb-3 d-flex align-items-center">
+                        <div class="bg-light p-3 rounded-circle me-3 text-danger"><i class="fa-solid fa-location-dot fa-lg"></i></div>
+                        <div>
+                            <small class="text-muted fw-bold text-uppercase d-block">Địa điểm</small>
+                            <span id="detailLocation" class="fw-bold text-dark">...</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 d-flex align-items-center">
+                        <div class="bg-light p-3 rounded-circle me-3 text-success"><i class="fa-solid fa-users fa-lg"></i></div>
+                        <div>
+                            <small class="text-muted fw-bold text-uppercase d-block">Quy mô / Vé</small>
+                            <span id="detailCapacity" class="fw-bold text-dark">...</span>
+                        </div>
+                    </div>
+
+                    <div id="actionButtonArea">
+                        <button onclick="openBookingModal()" class="btn btn-purple w-100 py-3 fw-bold rounded-pill shadow-sm">
+                            <i class="fa-solid fa-ticket me-2"></i> ĐẶT VÉ NGAY
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -69,39 +94,37 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg rounded-4">
                 <div class="modal-header bg-purple text-white border-0">
-                    <h5 class="modal-title fw-bold" id="modalTitle">Thông Tin Đặt Vé</h5>
+                    <h5 class="modal-title fw-bold">Thông Tin Đặt Vé</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4">
-                    
                     <div id="step1-form">
                         <div class="mb-3"><label class="fw-bold small">Họ tên</label><input type="text" id="cusName" class="form-control bg-light"></div>
                         <div class="mb-3"><label class="fw-bold small">SĐT</label><input type="text" id="cusPhone" class="form-control bg-light"></div>
                         <div class="mb-3"><label class="fw-bold small">Email</label><input type="email" id="cusEmail" class="form-control bg-light"></div>
                         <div class="bg-light p-3 rounded mb-3 border">
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold">Số lượng:</span>
+                                <span class="fw-bold">Số lượng vé:</span>
                                 <input type="number" id="cusQty" class="form-control w-25 text-center fw-bold" value="1" min="1" onchange="calculateBookingTotal()">
                             </div>
                             <div class="d-flex justify-content-between align-items-center text-purple mt-2">
-                                <span class="fw-bold">Tạm tính:</span>
+                                <span class="fw-bold">Tổng tiền:</span>
                                 <span id="totalPriceDisplay" class="fs-4 fw-bolder">125.000 đ</span>
                             </div>
                         </div>
-                        <button onclick="goToStep2()" class="btn btn-purple w-100 py-2 fw-bold">Tiếp tục</button>
+                        <button onclick="goToStep2()" class="btn btn-purple w-100 py-2 fw-bold">Thanh toán ngay</button>
                     </div>
 
                     <div id="step2-qr" class="d-none text-center">
-                        <div class="alert alert-warning small border-0 mb-2">Quét mã để thanh toán</div>
+                        <div class="alert alert-warning small border-0 mb-2">Quét mã QR bên dưới để thanh toán</div>
                         <img id="qrImage" src="" class="img-fluid border rounded mb-3 shadow-sm" style="max-height: 250px;">
                         <h4 class="fw-bold text-danger mb-1" id="qrAmount">0 đ</h4>
-                        <p class="text-muted small mb-4">Nội dung: <span id="qrContent" class="fw-bold text-dark">...</span></p>
+                        <p class="text-muted small mb-4">Nội dung CK: <strong id="qrContent" class="text-dark">...</strong></p>
                         <div class="d-flex gap-2">
                             <button onclick="backToStep1()" class="btn btn-outline-secondary w-50">Quay lại</button>
-                            <button id="btnConfirmBooking" onclick="finishBooking()" class="btn btn-success w-50 fw-bold">Đã thanh toán</button>
+                            <button id="btnConfirmBooking" onclick="finishBooking()" class="btn btn-success w-50 fw-bold">Xác nhận đã CK</button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -112,13 +135,18 @@
             <div class="modal-content border-0 rounded-4 text-center p-4">
                 <div class="text-success mb-3" style="font-size: 3rem;"><i class="fa-solid fa-circle-check"></i></div>
                 <h4 class="fw-bold mb-2">Đặt Vé Thành Công!</h4>
-                <p class="text-muted">Vé đã gửi tới: <strong id="successEmail">...</strong></p>
+                <p class="text-muted">Vé điện tử đã được gửi tới: <strong id="successEmail">...</strong></p>
                 <button class="btn btn-primary rounded-pill px-5" onclick="window.location.href='index.html'">Về Trang Chủ</button>
             </div>
         </div>
     </div>
 
-    <script src="assets/scripts/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="assets/scripts/app.js"></script>  
+
+
+    
+
+
 </body>
 </html>

@@ -407,5 +407,30 @@ footer {
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             border: 1px solid #e9ecef;
         }
+        /* Custom CSS for ElipVIET Theme */
+.bg-purple {
+    background-color: #6f42c1 !important; /* Màu tím chủ đạo */
+}
+
+.text-purple {
+    color: #6f42c1 !important;
+}
+
+.btn-purple {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    color: white;
+}
+
+.btn-purple:hover {
+    background-color: #5d37a5; /* Tối hơn khi hover */
+    border-color: #5d37a5;
+    color: white;
+}
+
+/* Đảm bảo ảnh sự kiện không bị méo */
+.object-fit-cover {
+    object-fit: cover;
+}
     
 /* Kết thúc file styles.css */
